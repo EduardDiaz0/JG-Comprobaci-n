@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Galería de JG Servicios Integrales - Eventos, capacitaciones e instalaciones.">
+    <title>Galería | JG Servicios Integrales</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../css/variables.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="icon" type="image/png" href="../images/logo/favicon.png">
+
+    <style>
+        /* GALERÍA GRID */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: var(--spacing-md);
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: var(--border-radius-lg);
+            cursor: pointer;
+            aspect-ratio: 4 / 3;
+            background: var(--color-light);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform var(--transition-slow);
+            display: block;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.08);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 61, 130, 0.7);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity var(--transition-normal);
+            padding: var(--spacing-lg);
+            text-align: center;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-overlay h3 {
+            color: white;
+            font-size: var(--font-size-base);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .gallery-overlay p {
+            color: rgba(255,255,255,0.85);
+            font-size: var(--font-size-sm);
+            margin: 0;
+        }
+
+        .gallery-overlay .zoom-icon {
+            font-size: 32px;
+            margin-bottom: var(--spacing-md);
+        }
+
+        /* PLACEHOLDER PARA FOTOS AÚN SIN AGREGAR */
+        .gallery-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: var(--color-light);
+            color: var(--color-gray);
+            font-size: var(--font-size-sm);
+            gap: var(--spacing-sm);
+        }
+
+        .gallery-placeholder span {
+            font-size: 48px;
+        }
+
+        /* LIGHTBOX */
+        .lightbox {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.92);
+            z-index: var(--z-modal);
+            align-items: center;
+            justify-content: center;
+            padding: var(--spacing-xl);
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox-img {
+            max-width: 90vw;
+            max-height: 80vh;
+            border-radius: var(--border-radius-md);
+            object-fit: contain;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: var(--spacing-xl);
+            right: var(--spacing-xl);
+            background: none;
+            border: none;
+            color: white;
+            font-size: 40px;
+            cursor: pointer;
+            line-height: 1;
+        }
+
+        .lightbox-caption {
+            position: absolute;
+            bottom: var(--spacing-xl);
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            text-align: center;
+            font-size: var(--font-size-sm);
+        }
+
+        /* TABS DE CATEGORÍA */
+        .gallery-tabs {
+            display: flex;
+            gap: var(--spacing-md);
+            flex-wrap: wrap;
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .gallery-tab {
+            padding: var(--spacing-sm) var(--spacing-lg);
+            border: 2px solid var(--color-gray-light);
+            border-radius: var(--border-radius-full);
+            background: white;
+            cursor: pointer;
+            font-family: var(--font-main);
+            font-weight: var(--font-weight-semibold);
+            font-size: var(--font-size-sm);
+            transition: all var(--transition-normal);
+            color: var(--color-dark);
+        }
+
+        .gallery-tab:hover,
+        .gallery-tab.active {
+            background: var(--color-secondary);
+            border-color: var(--color-secondary);
+            color: white;
+        }
+
+        .gallery-section {
+            margin-bottom: var(--spacing-3xl);
+        }
+
+        .gallery-section h2 {
+            font-size: var(--font-size-2xl);
+            color: var(--color-primary);
+            margin-bottom: var(--spacing-xl);
+            padding-bottom: var(--spacing-md);
+            border-bottom: 3px solid var(--color-secondary);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header class="header" id="header">
+        <nav class="navbar">
+            <div class="container">
+                <div class="navbar-wrapper">
+                    <a href="../index.html" class="logo">
+                        <img src="../images/logo/logo.png" alt="JG Servicios Integrales">
+                    </a>
+                    <ul class="nav-menu" id="navMenu">
+                        <li><a href="../index.html">Inicio</a></li>
+                        <li><a href="nosotros.html">Nosotros</a></li>
+                        <li><a href="servicios.html">Servicios</a></li>
+                        <li><a href="productos.html">Productos</a></li>
+                        <li><a href="proveedores.html">Proveedores</a></li>
+                        <li><a href="galeria.html">Galería</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="contacto.html" class="btn-contact">Contacto</a></li>
+                    </ul>
+                    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
+                        <span></span><span></span><span></span>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+
+    <!-- PAGE HERO -->
+    <section class="page-hero">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="../index.html">Inicio</a>
+                <span>/</span>
+                <span>Galería</span>
+            </div>
+            <h1>Galería</h1>
+            <p>Eventos, capacitaciones e instalaciones de JG Servicios Integrales</p>
+        </div>
+    </section>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+        <div class="container">
+
+
+            <!-- EQUIPO / OFICINA -->
+            <div class="gallery-section">
+                <h2>🏢 Nuestras Instalaciones</h2>
+                <div class="gallery-grid">
+
+                    <div class="gallery-item" onclick="openLightbox('../images/office/oficina1.jpg', 'Oficinas JG Servicios Integrales')">
+                        <img src="../images/office/oficina1.jpg" alt="Oficinas">
+                        <div class="gallery-overlay">
+                            <span class="zoom-icon">🔍</span>
+                            <h3>Oficinas</h3>
+                            <p>Nuestras instalaciones en Tuxtla Gutiérrez</p>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" onclick="openLightbox('../images/office/oficina2.jpg', 'Almacén JG Servicios')">
+                        <img src="../images/office/oficina2.jpg" alt="Almacén">
+                        <div class="gallery-overlay">
+                            <span class="zoom-icon">🔍</span>
+                            <h3>Almacén</h3>
+                            <p>Bodega y área de logística</p>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" onclick="openLightbox('../images/office/oficina3.jpg', 'Área de trabajo')">
+                        <div class="gallery-placeholder">
+                            <span>📷</span>
+                            <p>Agrega tu foto aquí</p>
+                        </div>
+                        <div class="gallery-overlay">
+                            <span class="zoom-icon">🔍</span>
+                            <h3>Área de Trabajo</h3>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <!-- EQUIPO HUMANO -->
+            <div class="gallery-section">
+                <h2>👥 Nuestro Equipo</h2>
+                <div class="gallery-grid">
+
+                    <div class="gallery-item" onclick="openLightbox('../images/team/equipo1.jpg', 'Equipo JG Servicios')">
+                        <img src="../images/team/equipo1.jpg" alt="Equipo de trabajo">
+                        <div class="gallery-overlay">
+                            <span class="zoom-icon">🔍</span>
+                            <h3>Equipo de Trabajo</h3>
+                            <p>Profesionales comprometidos con la salud</p>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" onclick="openLightbox('../images/team/equipo2.jpg', 'Personal JG Servicios')">
+                        <div class="gallery-placeholder">
+                            <span>📷</span>
+                            <p>Agrega tu foto aquí</p>
+                        </div>
+                        <div class="gallery-overlay">
+                            <span class="zoom-icon">🔍</span>
+                            <h3>Personal</h3>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" onclick="openLightbox('../images/team/equipo3.jpg', 'Reunión de equipo')">
+                        <div class="gallery-placeholder">
+                            <span>📷</span>
+                            <p>Agrega tu foto aquí</p>
+                        </div>
+                        <div class="gallery-overlay">
+                            <span class="zoom-icon">🔍</span>
+                            <h3>Reunión de Equipo</h3>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <!-- CAPACITACIONES Y EVENTOS -->
+            <div class="gallery-section">
+                <h2>📋 Capacitaciones y Eventos</h2>
+                <div class="gallery-grid">
+
+                    <div class="gallery-item" onclick="openLightbox('../images/events/evento1.jpg', 'Capacitación médica')">
+                        <img src="../images/events/evento1.jpg" alt="Capacitación">
+                        <div class="gallery-overlay">
+                            <span class="zoom-icon">🔍</span>
+                            <h3>Capacitación</h3>
+                            <p>Taller de uso de material médico</p>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" onclick="openLightbox('../images/events/evento2.jpg', 'Evento médico')">
+                        <div class="gallery-placeholder">
+                            <span>📷</span>
+                            <p>Agrega tu foto aquí</p>
+                        </div>
+                        <div class="gallery-overlay">
+                            <span class="zoom-icon">🔍</span>
+                            <h3>Evento Médico</h3>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" onclick="openLightbox('../images/events/evento3.jpg', 'Congreso salud')">
+                        <div class="gallery-placeholder">
+                            <span>📷</span>
+                            <p>Agrega tu foto aquí</p>
+                        </div>
+                        <div class="gallery-overlay">
+                            <span class="zoom-icon">🔍</span>
+                            <h3>Congreso de Salud</h3>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" onclick="openLightbox('../images/events/evento4.jpg', 'Entrega de productos')">
+                        <div class="gallery-placeholder">
+                            <span>📷</span>
+                            <p>Agrega tu foto aquí</p>
+                        </div>
+                        <div class="gallery-overlay">
+                            <span class="zoom-icon">🔍</span>
+                            <h3>Entrega de Productos</h3>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" onclick="openLightbox('../images/events/evento5.jpg', 'Taller práctico')">
+                        <div class="gallery-placeholder">
+                            <span>📷</span>
+                            <p>Agrega tu foto aquí</p>
+                        </div>
+                        <div class="gallery-overlay">
+                            <span class="zoom-icon">🔍</span>
+                            <h3>Taller Práctico</h3>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" onclick="openLightbox('../images/events/evento6.jpg', 'Conferencia')">
+                        <div class="gallery-placeholder">
+                            <span>📷</span>
+                            <p>Agrega tu foto aquí</p>
+                        </div>
+                        <div class="gallery-overlay">
+                            <span class="zoom-icon">🔍</span>
+                            <h3>Conferencia</h3>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+        </div>
+    </main>
+
+
+    <!-- LIGHTBOX -->
+    <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+        <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+        <img class="lightbox-img" id="lightboxImg" src="" alt="">
+        <div class="lightbox-caption" id="lightboxCaption"></div>
+    </div>
+
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>JG Servicios Integrales</h4>
+                    <p>Distribuidora de insumos hospitalarios en Chiapas.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Navegación</h4>
+                    <ul>
+                        <li><a href="../index.html">Inicio</a></li>
+                        <li><a href="nosotros.html">Nosotros</a></li>
+                        <li><a href="servicios.html">Servicios</a></li>
+                        <li><a href="productos.html">Productos</a></li>
+                        <li><a href="proveedores.html">Proveedores</a></li>
+                        <li><a href="galeria.html">Galería</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="contacto.html">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contacto</h4>
+                    <ul>
+                        <li><a href="tel:9614540029">961 454 00 29</a></li>
+                        <li><a href="mailto:contacto@jgserviciosintegrales.mx">contacto@jgserviciosintegrales.mx</a></li>
+                        <li>Av. Rosa del Oriente No. 178, Tuxtla Gutiérrez, Chiapas</li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Redes Sociales</h4>
+                    <div class="social-links">
+                        <a href="#" target="_blank">Facebook</a>
+                        <a href="#" target="_blank">Twitter / X</a>
+                        <a href="https://wa.me/529614540029" target="_blank">WhatsApp</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 JG Servicios Integrales de Chiapas. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script>
+        function openLightbox(src, caption) {
+            const lb = document.getElementById('lightbox');
+            const img = document.getElementById('lightboxImg');
+            const cap = document.getElementById('lightboxCaption');
+            img.src = src;
+            img.alt = caption;
+            cap.textContent = caption;
+            lb.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox(e) {
+            if (!e || e.target !== document.getElementById('lightboxImg')) {
+                document.getElementById('lightbox').classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        }
+
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') closeLightbox();
+        });
+    </script>
+
+</body>
+</html>

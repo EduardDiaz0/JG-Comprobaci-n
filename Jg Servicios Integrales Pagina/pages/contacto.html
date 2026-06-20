@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contacta a JG Servicios Integrales - Teléfono, email, formulario y ubicación.">
+    <title>Contacto | JG Servicios Integrales</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../css/variables.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="icon" type="image/png" href="../images/logo/favicon.png">
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header class="header" id="header">
+        <nav class="navbar">
+            <div class="container">
+                <div class="navbar-wrapper">
+                    <a href="../index.html" class="logo">
+                        <img src="../images/logo/logo.png" alt="JG Servicios Integrales">
+                    </a>
+                    <ul class="nav-menu" id="navMenu">
+                        <li><a href="../index.html">Inicio</a></li>
+                        <li><a href="nosotros.html">Nosotros</a></li>
+                        <li><a href="servicios.html">Servicios</a></li>
+                        <li><a href="productos.html">Productos</a></li>
+                        <li><a href="proveedores.html">Proveedores</a></li>
+                        <li><a href="galeria.html">Galería</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="contacto.html" class="btn-contact">Contacto</a></li>
+                    </ul>
+                    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
+                        <span></span><span></span><span></span>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+
+    <!-- PAGE HERO -->
+    <section class="page-hero">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="../index.html">Inicio</a>
+                <span>/</span>
+                <span>Contacto</span>
+            </div>
+            <h1>Contáctanos</h1>
+            <p>Estamos listos para atenderte. Escríbenos, llámanos o visítanos.</p>
+        </div>
+    </section>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+        <div class="container">
+
+            <div class="grid grid-2" style="gap: var(--spacing-3xl); align-items: start;">
+
+                <!-- FORMULARIO -->
+                <div>
+                    <h2 style="margin-bottom: var(--spacing-xl);">Envíanos un mensaje</h2>
+
+                    <form id="contactForm" novalidate>
+
+                        <div class="form-group">
+                            <label for="nombre">Nombre completo *</label>
+                            <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
+                            <span class="error-message">Por favor ingresa tu nombre</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Correo electrónico *</label>
+                            <input type="email" id="email" name="email" placeholder="correo@ejemplo.com" required>
+                            <span class="error-message">Ingresa un correo válido</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="telefono">Teléfono</label>
+                            <input type="tel" id="telefono" name="telefono" placeholder="961 000 0000">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="empresa">Empresa / Institución</label>
+                            <input type="text" id="empresa" name="empresa" placeholder="Hospital, clínica, farmacia...">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="asunto">Asunto *</label>
+                            <select id="asunto" name="asunto" required>
+                                <option value="">Selecciona un asunto</option>
+                                <option value="cotizacion">Solicitud de cotización</option>
+                                <option value="catalogo">Solicitar catálogo</option>
+                                <option value="capacitacion">Información sobre capacitaciones</option>
+                                <option value="licitacion">Licitaciones públicas</option>
+                                <option value="soporte">Soporte técnico</option>
+                                <option value="otro">Otro</option>
+                            </select>
+                            <span class="error-message">Selecciona un asunto</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="mensaje">Mensaje *</label>
+                            <textarea id="mensaje" name="mensaje" rows="5"
+                                placeholder="Cuéntanos qué necesitas, qué productos te interesan, cantidades, etc." required></textarea>
+                            <span class="error-message">Por favor escribe tu mensaje</span>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-block">
+                            Enviar mensaje
+                        </button>
+
+                    </form>
+                </div>
+
+
+                <!-- INFO DE CONTACTO -->
+                <div>
+                    <h2 style="margin-bottom: var(--spacing-xl);">Información de contacto</h2>
+
+                    <div style="display: flex; flex-direction: column; gap: var(--spacing-lg);">
+
+                        <div class="contact-info-item" style="display: flex; gap: var(--spacing-lg); align-items: flex-start; padding: var(--spacing-lg); background: var(--color-light); border-radius: var(--border-radius-md);">
+                            <span style="font-size: 32px;">📞</span>
+                            <div>
+                                <h3 style="margin-bottom: var(--spacing-sm); color: var(--color-primary);">Teléfonos</h3>
+                                <p style="margin: 0;"><a href="tel:9614540029">961 454 00 29</a></p>
+                                <p style="margin: 0; font-size: var(--font-size-sm); color: var(--color-gray);">Ext. 101 — Ventas</p>
+                                <p style="margin: 0; font-size: var(--font-size-sm); color: var(--color-gray);">Ext. 102 — Logística</p>
+                                <p style="margin: 0; font-size: var(--font-size-sm); color: var(--color-gray);">Ext. 103 — Administración</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-info-item" style="display: flex; gap: var(--spacing-lg); align-items: flex-start; padding: var(--spacing-lg); background: var(--color-light); border-radius: var(--border-radius-md);">
+                            <span style="font-size: 32px;">📧</span>
+                            <div>
+                                <h3 style="margin-bottom: var(--spacing-sm); color: var(--color-primary);">Correo Electrónico</h3>
+                                <p style="margin: 0;"><a href="mailto:contacto@jgserviciosintegrales.mx">contacto@jgserviciosintegrales.mx</a></p>
+                                <p style="margin: 0;"><a href="mailto:ventas@jgserviciosintegrales.mx">ventas@jgserviciosintegrales.mx</a></p>
+                            </div>
+                        </div>
+
+                        <div class="contact-info-item" style="display: flex; gap: var(--spacing-lg); align-items: flex-start; padding: var(--spacing-lg); background: var(--color-light); border-radius: var(--border-radius-md);">
+                            <span style="font-size: 32px;">💬</span>
+                            <div>
+                                <h3 style="margin-bottom: var(--spacing-sm); color: var(--color-primary);">WhatsApp</h3>
+                                <a href="https://wa.me/529614540029?text=Hola, me interesa información sobre sus productos"
+                                   target="_blank" class="btn btn-secondary btn-small">
+                                    Escribir por WhatsApp
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="contact-info-item" style="display: flex; gap: var(--spacing-lg); align-items: flex-start; padding: var(--spacing-lg); background: var(--color-light); border-radius: var(--border-radius-md);">
+                            <span style="font-size: 32px;">📍</span>
+                            <div>
+                                <h3 style="margin-bottom: var(--spacing-sm); color: var(--color-primary);">Dirección</h3>
+                                <p style="margin: 0;">Av. Rosa del Oriente No. 178</p>
+                                <p style="margin: 0;">Tuxtla Gutiérrez, Chiapas, México</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-info-item" style="display: flex; gap: var(--spacing-lg); align-items: flex-start; padding: var(--spacing-lg); background: var(--color-light); border-radius: var(--border-radius-md);">
+                            <span style="font-size: 32px;">🕐</span>
+                            <div>
+                                <h3 style="margin-bottom: var(--spacing-sm); color: var(--color-primary);">Horario de Atención</h3>
+                                <p style="margin: 0;">Lunes a Viernes: 9:00 am – 7:00 pm</p>
+                                <p style="margin: 0;">Sábados: 9:00 am – 2:00 pm</p>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <!-- MAPA -->
+                    <div style="margin-top: var(--spacing-xl);">
+                        <h3 style="margin-bottom: var(--spacing-md);">Ubicación</h3>
+                        <div style="border-radius: var(--border-radius-lg); overflow: hidden;">
+                            <iframe
+                                src="https://www.google.com/maps?q=16.7615676,-93.0873629&z=17&output=embed"
+                                width="100%"
+                                height="300"
+                                style="border:0; display:block;"
+                                allowfullscreen=""
+                                loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade"
+                                title="Ubicación JG Servicios Integrales">
+                            </iframe>
+                        </div>
+                        <p style="margin-top: var(--spacing-sm); font-size: var(--font-size-sm);">
+                            <a href="https://www.google.com/maps/place/Jg+Servicios+Integrales+de+Chiapas,+Farmacia+Promac+Productos+medicos+y+Material+de+curacion/@16.7615676,-93.0873629,675m/data=!3m2!1e3!4b1!4m6!3m5!1s0x85ed276f8bcd6471:0x97339f5c29547f40!8m2!3d16.7615676!4d-93.0873629!16s%2Fg%2F11dxkvzxwv?hl=es-419" target="_blank">
+                                Ver en Google Maps y obtener indicaciones →
+                            </a>
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </main>
+
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>JG Servicios Integrales</h4>
+                    <p>Distribuidora de insumos hospitalarios en Chiapas.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Navegación</h4>
+                    <ul>
+                        <li><a href="../index.html">Inicio</a></li>
+                        <li><a href="nosotros.html">Nosotros</a></li>
+                        <li><a href="servicios.html">Servicios</a></li>
+                        <li><a href="productos.html">Productos</a></li>
+                        <li><a href="proveedores.html">Proveedores</a></li>
+                        <li><a href="galeria.html">Galería</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="contacto.html">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contacto</h4>
+                    <ul>
+                        <li><a href="tel:9614540029">961 454 00 29</a></li>
+                        <li><a href="mailto:contacto@jgserviciosintegrales.mx">contacto@jgserviciosintegrales.mx</a></li>
+                        <li>Av. Rosa del Oriente No. 178, Tuxtla Gutiérrez, Chiapas</li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Redes Sociales</h4>
+                    <div class="social-links">
+                        <a href="#" target="_blank">Facebook</a>
+                        <a href="#" target="_blank">Twitter / X</a>
+                        <a href="https://wa.me/529614540029" target="_blank">WhatsApp</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 JG Servicios Integrales de Chiapas. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+
+</body>
+</html>

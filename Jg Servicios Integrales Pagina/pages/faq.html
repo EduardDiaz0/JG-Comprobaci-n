@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Preguntas frecuentes sobre JG Servicios Integrales - Distribuidora de insumos hospitalarios.">
+    <title>Preguntas Frecuentes | JG Servicios Integrales</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../css/variables.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="icon" type="image/png" href="../images/logo/favicon.png">
+
+    <style>
+        /* ACCORDION FAQ */
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-category {
+            margin-bottom: var(--spacing-3xl);
+        }
+
+        .faq-category h2 {
+            font-size: var(--font-size-xl);
+            color: var(--color-primary);
+            margin-bottom: var(--spacing-lg);
+            padding-bottom: var(--spacing-sm);
+            border-bottom: 3px solid var(--color-secondary);
+        }
+
+        .faq-item {
+            border: 1px solid var(--color-gray-light);
+            border-radius: var(--border-radius-md);
+            margin-bottom: var(--spacing-md);
+            overflow: hidden;
+            transition: box-shadow var(--transition-normal);
+        }
+
+        .faq-item:hover {
+            box-shadow: var(--shadow-sm);
+        }
+
+        .faq-item.open {
+            box-shadow: var(--shadow-md);
+            border-color: var(--color-primary);
+        }
+
+        .faq-question {
+            width: 100%;
+            background: white;
+            border: none;
+            padding: var(--spacing-lg) var(--spacing-xl);
+            text-align: left;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: var(--spacing-lg);
+            font-family: var(--font-main);
+            font-weight: var(--font-weight-semibold);
+            font-size: var(--font-size-base);
+            color: var(--color-dark);
+            transition: background var(--transition-normal);
+        }
+
+        .faq-question:hover {
+            background: var(--color-light);
+        }
+
+        .faq-item.open .faq-question {
+            background: var(--color-primary);
+            color: white;
+        }
+
+        .faq-icon {
+            font-size: 20px;
+            font-weight: 300;
+            flex-shrink: 0;
+            transition: transform var(--transition-normal);
+            line-height: 1;
+        }
+
+        .faq-item.open .faq-icon {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height var(--transition-slow), padding var(--transition-normal);
+            padding: 0 var(--spacing-xl);
+            background: white;
+        }
+
+        .faq-answer.open {
+            max-height: 500px;
+            padding: var(--spacing-lg) var(--spacing-xl);
+        }
+
+        .faq-answer p {
+            color: var(--color-gray-dark);
+            line-height: 1.8;
+            margin: 0;
+        }
+
+        .faq-answer ul {
+            color: var(--color-gray-dark);
+            margin-left: var(--spacing-lg);
+        }
+
+        .faq-answer li {
+            margin-bottom: var(--spacing-sm);
+            line-height: 1.6;
+        }
+
+        /* BUSCADOR FAQ */
+        .faq-search {
+            max-width: 500px;
+            margin: 0 auto var(--spacing-3xl);
+            position: relative;
+        }
+
+        .faq-search input {
+            width: 100%;
+            padding: var(--spacing-lg) var(--spacing-xl);
+            padding-right: 50px;
+            border: 2px solid var(--color-gray-light);
+            border-radius: var(--border-radius-full);
+            font-size: var(--font-size-base);
+            transition: border-color var(--transition-normal);
+        }
+
+        .faq-search input:focus {
+            outline: none;
+            border-color: var(--color-primary);
+        }
+
+        .faq-search-icon {
+            position: absolute;
+            right: var(--spacing-lg);
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 20px;
+            pointer-events: none;
+        }
+
+        .faq-item.hidden {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header class="header" id="header">
+        <nav class="navbar">
+            <div class="container">
+                <div class="navbar-wrapper">
+                    <a href="../index.html" class="logo">
+                        <img src="../images/logo/logo.png" alt="JG Servicios Integrales">
+                    </a>
+                    <ul class="nav-menu" id="navMenu">
+                        <li><a href="../index.html">Inicio</a></li>
+                        <li><a href="nosotros.html">Nosotros</a></li>
+                        <li><a href="servicios.html">Servicios</a></li>
+                        <li><a href="productos.html">Productos</a></li>
+                        <li><a href="proveedores.html">Proveedores</a></li>
+                        <li><a href="galeria.html">Galería</a></li>
+                        <li><a href="contacto.html" class="btn-contact">Contacto</a></li>
+                    </ul>
+                    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
+                        <span></span><span></span><span></span>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+
+    <!-- PAGE HERO -->
+    <section class="page-hero">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="../index.html">Inicio</a>
+                <span>/</span>
+                <span>Preguntas Frecuentes</span>
+            </div>
+            <h1>Preguntas Frecuentes</h1>
+            <p>Resolvemos tus dudas sobre nuestros productos y servicios</p>
+        </div>
+    </section>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+        <div class="container">
+
+            <!-- BUSCADOR -->
+            <div class="faq-search">
+                <input type="text" id="faqSearch" placeholder="Buscar pregunta..." autocomplete="off">
+                <span class="faq-search-icon">🔍</span>
+            </div>
+
+            <div class="faq-container">
+
+
+                <!-- CATEGORÍA: GENERAL -->
+                <div class="faq-category">
+                    <h2>🏢 Información General</h2>
+
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            ¿Qué es JG Servicios Integrales?
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>JG Servicios Integrales de Chiapas es una empresa distribuidora de insumos hospitalarios, material de curación, equipo médico y farmacéuticos. Atendemos a hospitales, clínicas, farmacias y centros de salud públicos y privados en Chiapas y el sureste mexicano.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            ¿Dónde están ubicados?
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Estamos ubicados en Av. Rosa del Oriente No. 178, Tuxtla Gutiérrez, Chiapas, México. Nuestro horario de atención es de lunes a viernes de 9:00 am a 6:00 pm y sábados de 9:00 am a 1:00 pm.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            ¿Solo atienden en Chiapas?
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Nuestra base de operaciones es Chiapas, pero también distribuimos en estados del sureste mexicano como Tabasco, Oaxaca y Veracruz. Contáctanos para confirmar cobertura en tu región.</p>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <!-- CATEGORÍA: PRODUCTOS -->
+                <div class="faq-category">
+                    <h2>📦 Productos</h2>
+
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            ¿Qué tipos de productos manejan?
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Manejamos una amplia gama de productos para el sector salud:</p>
+                            <ul>
+                                <li>Material de curación (gasas, vendas, apósitos, suturas)</li>
+                                <li>Descartables (jeringas, catéteres, sondas, guantes)</li>
+                                <li>Farmacéuticos (medicamentos, soluciones parenterales)</li>
+                                <li>Equipo médico (diagnóstico, monitoreo, mobiliario hospitalario)</li>
+                                <li>Equipos de protección personal (EPP)</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            ¿Los productos tienen certificación?
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Sí. Todos nuestros productos cuentan con registro COFEPRIS y provienen de fabricantes certificados. Podemos entregar documentación de calidad, fichas técnicas y hojas de seguridad de cada producto que distribuimos.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            ¿Tienen catálogo de productos?
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Sí, puedes descargar nuestros catálogos en PDF desde la sección de <a href="productos.html">Productos</a>. También puedes solicitarnos un catálogo actualizado por correo a <a href="mailto:ventas@jgserviciosintegrales.mx">ventas@jgserviciosintegrales.mx</a>.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            ¿Puedo solicitar un producto que no está en el catálogo?
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>¡Claro que sí! Si necesitas un producto que no aparece en nuestro catálogo, contáctanos y lo buscamos con nuestros proveedores. Tenemos una amplia red de distribuidores que nos permite conseguir prácticamente cualquier insumo hospitalario.</p>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <!-- CATEGORÍA: PEDIDOS -->
+                <div class="faq-category">
+                    <h2>🛒 Pedidos y Cotizaciones</h2>
+
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            ¿Cómo puedo hacer un pedido o solicitar una cotización?
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Puedes solicitar una cotización de varias formas:</p>
+                            <ul>
+                                <li>Llenando el <a href="contacto.html">formulario de contacto</a></li>
+                                <li>Llamando al <a href="tel:9614540029">961 454 00 29</a></li>
+                                <li>Por WhatsApp al mismo número</li>
+                                <li>Por correo a <a href="mailto:ventas@jgserviciosintegrales.mx">ventas@jgserviciosintegrales.mx</a></li>
+                            </ul>
+                            <p>Te respondemos en menos de 24 horas hábiles.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button

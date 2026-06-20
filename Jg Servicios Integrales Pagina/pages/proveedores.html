@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Proveedores de JG Servicios Integrales - Marcas y distribuidores autorizados.">
+    <title>Proveedores | JG Servicios Integrales</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../css/variables.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="icon" type="image/png" href="../images/logo/favicon.png">
+
+    <style>
+        .provider-card {
+            background: white;
+            border-radius: var(--border-radius-lg);
+            padding: var(--spacing-xl);
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            transition: all var(--transition-normal);
+            border: 2px solid transparent;
+        }
+
+        .provider-card:hover {
+            border-color: var(--color-primary);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .provider-card img {
+            max-height: 90px;
+            max-width: 160px;
+            object-fit: contain;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .provider-card h3 {
+            font-size: var(--font-size-base);
+            color: var(--color-primary);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .provider-card p {
+            font-size: var(--font-size-sm);
+            color: var(--color-gray);
+            margin: 0;
+        }
+
+        .providers-full-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: var(--spacing-lg);
+        }
+
+        .category-label {
+            grid-column: 1 / -1;
+            font-family: var(--font-main);
+            font-weight: var(--font-weight-bold);
+            font-size: var(--font-size-xl);
+            color: var(--color-primary);
+            padding: var(--spacing-lg) 0 var(--spacing-sm);
+            border-bottom: 3px solid var(--color-secondary);
+            margin-bottom: var(--spacing-md);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header class="header" id="header">
+        <nav class="navbar">
+            <div class="container">
+                <div class="navbar-wrapper">
+                    <a href="../index.html" class="logo">
+                        <img src="../images/logo/logo.png" alt="JG Servicios Integrales">
+                    </a>
+                    <ul class="nav-menu" id="navMenu">
+                        <li><a href="../index.html">Inicio</a></li>
+                        <li><a href="nosotros.html">Nosotros</a></li>
+                        <li><a href="servicios.html">Servicios</a></li>
+                        <li><a href="productos.html">Productos</a></li>
+                        <li><a href="proveedores.html">Proveedores</a></li>
+                        <li><a href="galeria.html">Galería</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="contacto.html" class="btn-contact">Contacto</a></li>
+                    </ul>
+                    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
+                        <span></span><span></span><span></span>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+
+    <!-- PAGE HERO -->
+    <section class="page-hero">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="../index.html">Inicio</a>
+                <span>/</span>
+                <span>Proveedores</span>
+            </div>
+            <h1>Nuestros Proveedores</h1>
+            <p>Distribuidores autorizados de las mejores marcas del sector médico</p>
+        </div>
+    </section>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+        <div class="container">
+
+            <p class="section-subtitle" style="margin-bottom: var(--spacing-3xl);">
+                Trabajamos con marcas nacionales e internacionales de primer nivel, garantizando calidad, disponibilidad y respaldo en cada producto que distribuimos.
+            </p>
+
+            <div class="providers-full-grid">
+
+                <!-- MATERIAL DE CURACIÓN Y QUIRÚRGICO -->
+                <div class="category-label">🩹 Material de Curación y Quirúrgico</div>
+
+                <div class="provider-card">
+                    <img src="../images/providers/degasa.png" alt="Degasa">
+                    <h3>Degasa</h3>
+                    <p>Material de curación</p>
+                </div>
+
+                <div class="provider-card">
+                    <img src="../images/providers/ethicon.png" alt="Ethicon">
+                    <h3>Ethicon</h3>
+                    <p>Suturas y material quirúrgico</p>
+                </div>
+
+                <div class="provider-card">
+                    <img src="../images/providers/atramat.png" alt="Atramat">
+                    <h3>Atramat</h3>
+                    <p>Insumos médicos y quirúrgicos</p>
+                </div>
+
+                <div class="provider-card">
+                    <img src="../images/providers/uniseal.png" alt="Uniseal">
+                    <h3>Uniseal</h3>
+                    <p>Empaque y esterilización</p>
+                </div>
+
+
+                <!-- DESCARTABLES Y DISPOSITIVOS -->
+                <div class="category-label">💉 Descartables y Dispositivos Médicos</div>
+
+                <div class="provider-card">
+                    <img src="../images/providers/bd.png" alt="BD">
+                    <h3>BD</h3>
+                    <p>Jeringas, catéteres y dispositivos médicos</p>
+                </div>
+
+                <div class="provider-card">
+                    <img src="../images/providers/terumo.png" alt="Terumo">
+                    <h3>Terumo</h3>
+                    <p>Dispositivos médicos y de infusión</p>
+                </div>
+
+                <div class="provider-card">
+                    <img src="../images/providers/covidien.png" alt="Covidien">
+                    <h3>Covidien</h3>
+                    <p>Dispositivos médicos especializados</p>
+                </div>
+
+                <div class="provider-card">
+                    <img src="../images/providers/vygon.png" alt="Vygon">
+                    <h3>Vygon</h3>
+                    <p>Dispositivos de infusión y nutrición</p>
+                </div>
+
+
+                <!-- FARMACÉUTICOS -->
+                <div class="category-label">💊 Farmacéuticos</div>
+
+                <div class="provider-card">
+                    <img src="../images/providers/pisa.png" alt="PiSA">
+                    <h3>PiSA</h3>
+                    <p>Laboratorio farmacéutico</p>
+                </div>
+
+                <div class="provider-card">
+                    <img src="../images/providers/fanasa.png" alt="Fanasa">
+                    <h3>Fanasa</h3>
+                    <p>Distribución farmacéutica</p>
+                </div>
+
+                <div class="provider-card">
+                    <img src="../images/providers/biomedic.png" alt="Biomedic">
+                    <h3>Biomedic</h3>
+                    <p>Productos biomédicos</p>
+                </div>
+
+                <div class="provider-card">
+                    <img src="../images/providers/ipm.jpg" alt="IPM">
+                    <h3>IPM</h3>
+                    <p>Insumos y productos médicos</p>
+                </div>
+
+            </div>
+
+
+            <hr style="margin: var(--spacing-3xl) 0;">
+
+
+            <!-- ¿ERES PROVEEDOR? -->
+            <section style="text-align: center; padding: var(--spacing-3xl) 0;">
+                <h2>¿Eres proveedor o fabricante?</h2>
+                <p style="font-size: var(--font-size-lg); color: var(--color-gray); margin-bottom: var(--spacing-xl); max-width: 600px; margin-left: auto; margin-right: auto;">
+                    Estamos siempre abiertos a nuevas alianzas comerciales. Si tienes productos para el sector salud y quieres distribuirlos en Chiapas, contáctanos.
+                </p>
+                <a href="contacto.html" class="btn btn-primary btn-large">Ser proveedor</a>
+            </section>
+
+        </div>
+    </main>
+
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>JG Servicios Integrales</h4>
+                    <p>Distribuidora de insumos hospitalarios en Chiapas.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Navegación</h4>
+                    <ul>
+                        <li><a href="../index.html">Inicio</a></li>
+                        <li><a href="nosotros.html">Nosotros</a></li>
+                        <li><a href="servicios.html">Servicios</a></li>
+                        <li><a href="productos.html">Productos</a></li>
+                        <li><a href="proveedores.html">Proveedores</a></li>
+                        <li><a href="galeria.html">Galería</a></li>
+                        <li><a href="contacto.html">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contacto</h4>
+                    <ul>
+                        <li><a href="tel:9614540029">961 454 00 29</a></li>
+                        <li><a href="mailto:contacto@jgserviciosintegrales.mx">contacto@jgserviciosintegrales.mx</a></li>
+                        <li>Av. Rosa del Oriente No. 178, Tuxtla Gutiérrez, Chiapas</li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Redes Sociales</h4>
+                    <div class="social-links">
+                        <a href="#" target="_blank">Facebook</a>
+                        <a href="#" target="_blank">Twitter / X</a>
+                        <a href="https://wa.me/529614540029" target="_blank">WhatsApp</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 JG Servicios Integrales de Chiapas. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+
+</body>
+</html>

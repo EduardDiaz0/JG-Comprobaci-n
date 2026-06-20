@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Catálogo de productos - Insumos hospitalarios, material de curación, equipo médico y farmacéuticos.">
+    <title>Productos | JG Servicios Integrales</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../css/variables.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="icon" type="image/png" href="../images/logo/favicon.png">
+
+    <style>
+        /* FILTROS */
+        .filter-bar {
+            display: flex;
+            gap: var(--spacing-md);
+            flex-wrap: wrap;
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .filter-btn {
+            padding: var(--spacing-sm) var(--spacing-lg);
+            border: 2px solid var(--color-gray-light);
+            border-radius: var(--border-radius-full);
+            background: white;
+            cursor: pointer;
+            font-family: var(--font-main);
+            font-weight: var(--font-weight-semibold);
+            font-size: var(--font-size-sm);
+            transition: all var(--transition-normal);
+            color: var(--color-dark);
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--color-primary);
+            border-color: var(--color-primary);
+            color: white;
+        }
+
+        /* GRID DE PRODUCTOS */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: var(--spacing-xl);
+        }
+
+        .product-card {
+            background: white;
+            border-radius: var(--border-radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: all var(--transition-normal);
+        }
+
+        .product-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .product-card[data-categoria] {
+            display: block;
+        }
+
+        .product-card.hidden {
+            display: none;
+        }
+
+        .product-img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            background: var(--color-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 64px;
+        }
+
+        .product-img img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .product-body {
+            padding: var(--spacing-lg);
+        }
+
+        .product-category {
+            font-size: var(--font-size-xs);
+            font-weight: var(--font-weight-bold);
+            text-transform: uppercase;
+            color: var(--color-secondary);
+            letter-spacing: 1px;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .product-body h3 {
+            font-size: var(--font-size-base);
+            margin-bottom: var(--spacing-sm);
+            color: var(--color-dark);
+        }
+
+        .product-body p {
+            font-size: var(--font-size-sm);
+            color: var(--color-gray);
+            margin-bottom: var(--spacing-md);
+        }
+
+        /* SECCIÓN CATÁLOGOS PDF */
+        .catalog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: var(--spacing-lg);
+            margin-top: var(--spacing-xl);
+        }
+
+        .catalog-card {
+            background: white;
+            border: 2px solid var(--color-gray-light);
+            border-radius: var(--border-radius-lg);
+            padding: var(--spacing-xl);
+            text-align: center;
+            transition: all var(--transition-normal);
+        }
+
+        .catalog-card:hover {
+            border-color: var(--color-primary);
+            box-shadow: var(--shadow-md);
+        }
+
+        .catalog-icon {
+            font-size: 48px;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .catalog-card h3 {
+            font-size: var(--font-size-base);
+            margin-bottom: var(--spacing-sm);
+            color: var(--color-primary);
+        }
+
+        .catalog-card p {
+            font-size: var(--font-size-sm);
+            color: var(--color-gray);
+            margin-bottom: var(--spacing-md);
+        }
+
+        /* NO RESULTS */
+        .no-results {
+            display: none;
+            text-align: center;
+            padding: var(--spacing-3xl);
+            color: var(--color-gray);
+        }
+
+        .no-results.visible {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header class="header" id="header">
+        <nav class="navbar">
+            <div class="container">
+                <div class="navbar-wrapper">
+                    <a href="../index.html" class="logo">
+                        <img src="../images/logo/logo.png" alt="JG Servicios Integrales">
+                    </a>
+                    <ul class="nav-menu" id="navMenu">
+                        <li><a href="../index.html">Inicio</a></li>
+                        <li><a href="nosotros.html">Nosotros</a></li>
+                        <li><a href="servicios.html">Servicios</a></li>
+                        <li><a href="productos.html">Productos</a></li>
+                        <li><a href="proveedores.html">Proveedores</a></li>
+                        <li><a href="galeria.html">Galería</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="contacto.html" class="btn-contact">Contacto</a></li>
+                    </ul>
+                    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
+                        <span></span><span></span><span></span>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+
+    <!-- PAGE HERO -->
+    <section class="page-hero">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="../index.html">Inicio</a>
+                <span>/</span>
+                <span>Productos</span>
+            </div>
+            <h1>Catálogo de Productos</h1>
+            <p>Insumos hospitalarios, material médico, equipo y farmacéuticos</p>
+        </div>
+    </section>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+        <div class="container">
+
+
+            <!-- FILTROS -->
+            <div class="filter-bar" id="filterBar">
+                <button class="filter-btn active" data-filter="todos">Todos</button>
+                <button class="filter-btn" data-filter="curacion">Material de Curación</button>
+                <button class="filter-btn" data-filter="farmaceutico">Farmacéuticos</button>
+                <button class="filter-btn" data-filter="equipo">Equipo Médico</button>
+                <button class="filter-btn" data-filter="descartable">Descartables</button>
+                <button class="filter-btn" data-filter="proteccion">Protección Personal</button>
+            </div>
+
+
+            <!-- GRID PRODUCTOS -->
+            <div class="products-grid" id="productsGrid">
+
+                <!-- MATERIAL DE CURACIÓN -->
+                <div class="product-card" data-categoria="curacion">
+                    <div class="product-img">🩹</div>
+                    <div class="product-body">
+                        <p class="product-category">Material de Curación</p>
+                        <h3>Gasas Estériles</h3>
+                        <p>Gasas 10x10 cm, 5x5 cm. Presentaciones individuales y en rollo. Varias medidas disponibles.</p>
+                        <a href="contacto.html" class="btn btn-primary btn-small">Cotizar</a>
+                    </div>
+                </div>
+
+                <div class="product-card" data-categoria="curacion">
+                    <div class="product-img">🩺</div>
+                    <div class="product-body">
+                        <p class="product-category">Material de Curación</p>
+                        <h3>Vendas de Gasa</h3>
+                        <p>Vendas de gasa elástica y no elástica. Medidas 5 cm, 7.5 cm, 10 cm, 15 cm de ancho.</p>
+                        <a href="contacto.html" class="btn btn-primary btn-small">Cotizar</a>
+                    </div>
+                </div>
+
+                <div class="product-card" data-categoria="curacion">
+                    <div class="product-img">🔴</div>
+                    <div class="product-body">
+                        <p class="product-category">Material de Curación</p>
+                        <h3>Apósitos y Parches</h3>
+                        <p>Apósitos adhesivos, hidrocoloides y transparentes para heridas de todo tipo.</p>
+                        <a href="contacto.html" class="btn btn-primary btn-small">Cotizar</a>
+                    </div>
+                </div>
+
+                <!-- FARMACÉUTICOS -->
+                <div class="product-card" data-categoria="farmaceutico">
+                    <div class="product-img">💊</div>
+                    <div class="product-body">
+                        <p class="product-category">Farmacéuticos</p>
+                        <h3>Antibióticos</h3>
+                        <p>Amplio catálogo de antibióticos de patente y genéricos. Amoxicilina, Azitromicina, Ciprofloxacino y más.</p>
+                        <a href="contacto.html" class="btn btn-primary btn-small">Cotizar</a>
+                    </div>
+                </div>
+
+                <div class="product-card" data-categoria="farmaceutico">
+                    <div class="product-img">🧪</div>
+                    <div class="product-body">
+                        <p class="product-category">Farmacéuticos</p>
+                        <h3>Soluciones Parenterales</h3>
+                        <p>Solución Salina, Hartmann, Glucosada al 5%, 10%, 50%. Presentaciones 250 ml, 500 ml, 1000 ml.</p>
+                        <a href="contacto.html" class="btn btn-primary btn-small">Cotizar</a>
+                    </div>
+                </div>
+
+                <div class="product-card" data-categoria="farmaceutico">
+                    <div class="product-img">🌡️</div>
+                    <div class="product-body">
+                        <p class="product-category">Farmacéuticos</p>
+                        <h3>Analgésicos y Antiinflamatorios</h3>
+                        <p>Paracetamol, Ketorolaco, Diclofenaco, Metamizol. En tabletas, inyectable y jarabe.</p>
+                        <a href="contacto.html" class="btn btn-primary btn-small">Cotizar</a>
+                    </div>
+                </div>
+
+                <!-- EQUIPO MÉDICO -->
+                <div class="product-card" data-categoria="equipo">
+                    <div class="product-img">🔬</div>
+                    <div class="product-body">
+                        <p class="product-category">Equipo Médico</p>
+                        <h3>Esfigmomanómetros</h3>
+                        <p>Tensiómetros aneroide, de mercurio y digitales. Para uso clínico y domiciliario.</p>
+                        <a href="contacto.html" class="btn btn-primary btn-small">Cotizar</a>
+                    </div>
+                </div>
+
+                <div class="product-card" data-categoria="equipo">
+                    <div class="product-img">🏥</div>
+                    <div class="product-body">
+                        <p class="product-category">Equipo Médico</p>
+                        <h3>Camas Hospitalarias</h3>
+                        <p>Camas de 1, 2 y 3 movimientos. Manual y eléctrica. Con y sin barandales.</p>
+                        <a href="contacto.html" class="btn btn-primary btn-small">Cotizar</a>
+                    </div>
+                </div>
+
+                <div class="product-card" data-categoria="equipo">
+                    <div class="product-img">💉</div>
+                    <div class="product-body">
+                        <p class="product-category">Equipo Médico</p>
+                        <h3>Bombas de Infusión</h3>
+                        <p>Bombas de infusión volumétricas y de jeringa. Marcas reconocidas con garantía.</p>
+                        <a href="contacto.html" class="btn btn-primary btn-small">Cotizar</a>
+                    </div>
+                </div>
+
+                <!-- DESCARTABLES -->
+                <div class="product-card" data-categoria="descartable">
+                    <div class="product-img">🩻</div>
+                    <div class="product-body">
+                        <p class="product-category">Descartables</p>
+                        <h3>Jeringas</h3>
+                        <p>Jeringas con y sin aguja. Capacidades: 1 ml, 3 ml, 5 ml, 10 ml, 20 ml, 50 ml. Caja de 100 pzas.</p>
+                        <a href="contacto.html" class="btn btn-primary btn-small">Cotizar</a>
+                    </div>
+                </div>
+
+                <div class="product-card" data-categoria="descartable">
+                    <div class="product-img">🔗</div>
+                    <div class="product-body">
+                        <p class="product-category">Descartables</p>
+                        <h3>Catéteres Venosos</h3>
+                        <p>Catéteres periféricos calibres 14G, 16G, 18G, 20G, 22G, 24G. Mariposas y centrales.</p>
+                        <a href="contacto.html" class="btn btn-primary btn-small">Cotizar</a>
+                    </div>
+                </div>
+
+                <div class="product-card" data-categoria="descartable">
+                    <div class="product-img">🫀</div>
+                    <div class="product-body">
+                        <p class="product-category">Descartables</p>
+                        <h3>Sondas y Drenajes</h3>
+                        <p>Sondas Foley, Nasogástricas, de Nelaton. Drenajes de Jackson-Pratt. Varios calibres.</p>
+                        <a href="contacto.html" class="btn btn-primary btn-small">Cotizar</a>
+                    </div>
+                </div>
+
+                <!-- PROTECCIÓN PERSONAL -->
+                <div class="product-card" data-categoria="proteccion">
+                    <div class="product-img">🧤</div>
+                    <div class="product-body">
+                        <p class="product-category">Protección Personal</p>
+                        <h3>Guantes Médicos</h3>
+                        <p>Guantes de látex, nitrilo y vinilo. Estériles y no estériles. Tallas XS, S, M, L, XL. Caja 100 pzas.</p>
+                        <a href="contacto.html" class="btn btn-primary btn-small">Cotizar</a>
+                    </div>
+                </div>
+
+                <div class="product-card" data-categoria="proteccion">
+                    <div class="product-img">😷</div>
+                    <div class="product-body">
+                        <p class="product-category">Protección Personal</p>
+                        <h3>Cubrebocas y Mascarillas</h3>
+                        <p>Cubrebocas plisados y moldeados tipo quirúrgico y N95/KN95. Individuales y en caja.</p>
+                        <a href="contacto.html" class="btn btn-primary btn-small">Cotizar</a>
+                    </div>
+                </div>
+
+                <div class="product-card" data-categoria="proteccion">
+                    <div class="product-img">🥽</div>
+                    <div class="product-body">
+                        <p class="product-category">Protección Personal</p>
+                        <h3>Batas y Blusones</h3>
+                        <p>Batas quirúrgicas estériles y blusones de tela y desechables para personal médico y de limpieza.</p>
+                        <a href="contacto.html" class="btn btn-primary btn-small">Cotizar</a>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Sin resultados -->
+            <div class="no-results" id="noResults">
+                <p style="font-size: var(--font-size-xl);">🔍</p>
+                <p>No hay productos en esta categoría aún.</p>
+            </div>
+
+
+            <hr style="margin: var(--spacing-3xl) 0;">
+
+
+            <!-- CATÁLOGOS PDF -->
+            <section>
+                <h2 class="section-title">Catálogos Descargables</h2>
+                <p class="section-subtitle">Descarga nuestros catálogos completos en PDF</p>
+
+                <div class="catalog-grid">
+
+                    <div class="catalog-card">
+                        <div class="catalog-icon">📋</div>
+                        <h3>Catálogo General</h3>
+                        <p>Todos nuestros productos en un solo documento.</p>
+                        <a href="../assets/catalogo-pdf/catalogo-general.pdf" target="_blank" class="btn btn-primary btn-small">
+                            Descargar PDF
+                        </a>
+                    </div>
+
+                    <div class="catalog-card">
+                        <div class="catalog-icon">🩹</div>
+                        <h3>Material de Curación</h3>
+                        <p>Catálogo completo de material de curación y apósitos.</p>
+                        <a href="../assets/catalogo-pdf/catalogo-curacion.pdf" target="_blank" class="btn btn-primary btn-small">
+                            Descargar PDF
+                        </a>
+                    </div>
+
+                    <div class="catalog-card">
+                        <div class="catalog-icon">💊</div>
+                        <h3>Farmacéuticos</h3>
+                        <p>Lista de medicamentos y productos farmacéuticos disponibles.</p>
+                        <a href="../assets/catalogo-pdf/catalogo-farmaceuticos.pdf" target="_blank" class="btn btn-primary btn-small">
+                            Descargar PDF
+                        </a>
+                    </div>
+
+                    <div class="catalog-card">
+                        <div class="catalog-icon">🔬</div>
+                        <h3>Equipo Médico</h3>
+                        <p>Catálogo de equipo médico y mobiliario hospitalario.</p>
+                        <a href="../assets/catalogo-pdf/catalogo-equipo.pdf" target="_blank" class="btn btn-primary btn-small">
+                            Descargar PDF
+                        </a>
+                    </div>
+
+                </div>
+            </section>
+
+
+        </div>
+    </main>
+
+
+    <!-- CTA -->
+    <section class="quick-contact" style="margin-top: var(--spacing-3xl);">
+        <div class="container" style="text-align: center; padding: var(--spacing-3xl) 0;">
+            <h2 style="color: white; margin-bottom: var(--spacing-md);">¿No encuentras lo que buscas?</h2>
+            <p style="color: rgba(255,255,255,0.8); margin-bottom: var(--spacing-xl);">Contáctanos y buscamos el producto que necesitas.</p>
+            <a href="contacto.html" class="btn btn-secondary btn-large">Solicitar producto específico</a>
+        </div>
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>JG Servicios Integrales</h4>
+                    <p>Distribuidora de insumos hospitalarios en Chiapas.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Navegación</h4>
+                    <ul>
+                        <li><a href="../index.html">Inicio</a></li>
+                        <li><a href="nosotros.html">Nosotros</a></li>
+                        <li><a href="servicios.html">Servicios</a></li>
+                        <li><a href="productos.html">Productos</a></li>
+                        <li><a href="proveedores.html">Proveedores</a></li>
+                        <li><a href="galeria.html">Galería</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="contacto.html">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contacto</h4>
+                    <ul>
+                        <li><a href="tel:9614540029">961 454 00 29</a></li>
+                        <li><a href="mailto:contacto@jgserviciosintegrales.mx">contacto@jgserviciosintegrales.mx</a></li>
+                        <li>Av. Rosa del Oriente No. 178, Tuxtla Gutiérrez, Chiapas</li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Redes Sociales</h4>
+                    <div class="social-links">
+                        <a href="#" target="_blank">Facebook</a>
+                        <a href="#" target="_blank">Twitter / X</a>
+                        <a href="https://wa.me/529614540029" target="_blank">WhatsApp</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 JG Servicios Integrales de Chiapas. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script>
+        // FILTRO DE PRODUCTOS
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const productCards = document.querySelectorAll('.product-card');
+        const noResults = document.getElementById('noResults');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', function () {
+                const filter = this.dataset.filter;
+
+                filterBtns.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+
+                let visible = 0;
+
+                productCards.forEach(card => {
+                    if (filter === 'todos' || card.dataset.categoria === filter) {
+                        card.classList.remove('hidden');
+                        visible++;
+                    } else {
+                        card.classList.add('hidden');
+                    }
+                });
+
+                noResults.classList.toggle('visible', visible === 0);
+            });
+        });
+    </script>
+
+</body>
+</html>

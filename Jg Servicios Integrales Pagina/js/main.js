@@ -207,7 +207,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
         const formData = new FormData(form);
 
-        fetch('php/send-email.php', {
+        const phpPath = window.location.pathname.includes('/pages/') ? '../php/send-email.php' : 'php/send-email.php';
+        fetch(phpPath, {
             method: 'POST',
             body: formData
         })

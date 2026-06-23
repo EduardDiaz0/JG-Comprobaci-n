@@ -15,6 +15,14 @@
     <link rel="stylesheet" href="../css/components.css">
     <link rel="stylesheet" href="../css/responsive.css">
     <link rel="icon" type="image/png" href="../images/logo/favicon.png">
+    <style>
+        /* Fix: evita que el logo del header se salga del flujo en páginas internas */
+        .header:not(.transparent) .logo,
+        .header:not(.transparent) .logo img {
+            position: static !important;
+            transform: none !important;
+        }
+    </style>
 </head>
 
 <body>
@@ -99,9 +107,10 @@
                             <select id="asunto" name="asunto" required>
                                 <option value="">Selecciona un asunto</option>
                                 <option value="cotizacion">Solicitud de cotización</option>
-                                <option value="catalogo">Solicitar catálogo</option>
-                                <option value="capacitacion">Información sobre capacitaciones</option>
-                                <option value="licitacion">Licitaciones públicas</option>
+                                <option value="general">Información general</option>
+                                <option value="quejas">Quejas y sugerencias</option>
+                                <option value="facturacion">Facturación</option>
+                                <option value="pedidos">Información de pedidos</option>
                                 <option value="soporte">Soporte técnico</option>
                                 <option value="otro">Otro</option>
                             </select>
@@ -181,27 +190,31 @@
                     </div>
 
 
-                    <!-- MAPA -->
-                    <div style="margin-top: var(--spacing-xl);">
-                        <h3 style="margin-bottom: var(--spacing-md);">Ubicación</h3>
-                        <div style="border-radius: var(--border-radius-lg); overflow: hidden;">
-                            <iframe
-                                src="https://www.google.com/maps?q=16.7615676,-93.0873629&z=17&output=embed"
-                                width="100%"
-                                height="300"
-                                style="border:0; display:block;"
-                                allowfullscreen=""
-                                loading="lazy"
-                                referrerpolicy="no-referrer-when-downgrade"
-                                title="Ubicación JG Servicios Integrales">
-                            </iframe>
-                        </div>
-                        <p style="margin-top: var(--spacing-sm); font-size: var(--font-size-sm);">
-                            <a href="https://www.google.com/maps/place/Jg+Servicios+Integrales+de+Chiapas,+Farmacia+Promac+Productos+medicos+y+Material+de+curacion/@16.7615676,-93.0873629,675m/data=!3m2!1e3!4b1!4m6!3m5!1s0x85ed276f8bcd6471:0x97339f5c29547f40!8m2!3d16.7615676!4d-93.0873629!16s%2Fg%2F11dxkvzxwv?hl=es-419" target="_blank">
-                                Ver en Google Maps y obtener indicaciones →
-                            </a>
-                        </p>
-                    </div>
+                   <!-- MAPA -->
+<div style="margin-top: var(--spacing-xl);">
+    <h3 style="margin-bottom: var(--spacing-md);">Ubicación</h3>
+
+    <div style="border-radius: var(--border-radius-lg); overflow: hidden;">
+        <iframe
+            src="https://www.google.com/maps?q=16.7615676,-93.0873629&z=17&output=embed"
+            width="100%"
+            height="300"
+            style="border:0; display:block;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Ubicación JG Servicios Integrales de Chiapas">
+        </iframe>
+    </div>
+
+    <p style="margin-top: var(--spacing-sm); font-size: var(--font-size-sm);">
+        <a href="https://www.google.com/maps/place/Jg+Servicios+Integrales+de+Chiapas,+Farmacia+Promac+Productos+medicos+y+Material+de+curacion/@16.7614707,-93.0873021,15z/data=!4m6!3m5!1s0x85ed276f8bcd6471:0x97339f5c29547f40!8m2!3d16.7615676!4d-93.0873629!16s%2Fg%2F11dxkvzxwv?entry=ttu&g_ep=EgoyMDI2MDYxNi4wIKXMDSoASAFQAw%3D%3D"
+           target="_blank"
+           rel="noopener noreferrer">
+            Ver en Google Maps y obtener indicaciones →
+        </a>
+    </p>
+</div>
 
                 </div>
 
@@ -211,50 +224,110 @@
     </main>
 
 
-    <!-- FOOTER -->
     <footer class="footer">
+
+
         <div class="container">
             <div class="footer-content">
-                <div class="footer-section">
-                    <h4>JG Servicios Integrales</h4>
-                    <p>Distribuidora de insumos hospitalarios en Chiapas.</p>
-                </div>
-                <div class="footer-section">
-                    <h4>Navegación</h4>
-                    <ul>
-                        <li><a href="../index.html">Inicio</a></li>
-                        <li><a href="nosotros.html">Nosotros</a></li>
-                        <li><a href="servicios.html">Servicios</a></li>
-                        <li><a href="productos.html">Productos</a></li>
-                        <li><a href="proveedores.html">Proveedores</a></li>
-                        <li><a href="galeria.html">Galería</a></li>
-                        <li><a href="faq.html">FAQ</a></li>
-                        <li><a href="contacto.html">Contacto</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Contacto</h4>
-                    <ul>
-                        <li><a href="tel:9614540029">961 454 00 29</a></li>
-                        <li><a href="mailto:contacto@jgserviciosintegrales.mx">contacto@jgserviciosintegrales.mx</a></li>
-                        <li>Av. Rosa del Oriente No. 178, Tuxtla Gutiérrez, Chiapas</li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Redes Sociales</h4>
-                    <div class="social-links">
-                        <a href="#" target="_blank">Facebook</a>
-                        <a href="#" target="_blank">Twitter / X</a>
-                        <a href="https://wa.me/529614540029" target="_blank">WhatsApp</a>
+
+                <!-- COLUMNA 1: Marca -->
+                <div class="footer-section footer-brand">
+                    <img src="../images/logo/logo.png" alt="JG Servicios Integrales" class="footer-logo">
+                    <p class="footer-brand-desc">
+                        Distribuidora chiapaneca de insumos hospitalarios con más de 13 años respaldando al sector salud con calidad, puntualidad y atención personalizada.
+                    </p>
+                    <div class="footer-social">
+                        <span class="footer-social-label">Síguenos</span>
+                        <div class="footer-social-icons">
+                            <a href="#" class="footer-social-btn" target="_blank" aria-label="Facebook">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                            </a>
+                            <a href="#" class="footer-social-btn" target="_blank" aria-label="Twitter / X">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.74l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                            </a>
+                            <a href="https://wa.me/529614540029" class="footer-social-btn footer-social-whatsapp" target="_blank" aria-label="WhatsApp">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                            </a>
+                        </div>
                     </div>
                 </div>
+
+                <!-- COLUMNA 2: Navegación -->
+                <div class="footer-section">
+                    <h4 class="footer-heading">Navegación</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="pages/nosotros.html">Nosotros</a></li>
+                        <li><a href="pages/servicios.html">Servicios</a></li>
+                        <li><a href="pages/productos.html">Productos</a></li>
+                        <li><a href="pages/proveedores.html">Proveedores</a></li>
+                        <li><a href="pages/faq.html">Preguntas Frecuentes</a></li>
+                        <li><a href="pages/contacto.html">Contacto</a></li>
+                    </ul>
+                </div>
+
+                <!-- COLUMNA 3: Servicios -->
+                <div class="footer-section">
+                    <h4 class="footer-heading">Servicios</h4>
+                    <ul class="footer-links">
+                        <li><a href="pages/servicios.html#distribucion">Distribución de Insumos</a></li>
+                        <li><a href="pages/servicios.html#farmaceuticos">Farmacéuticos</a></li>
+                        <li><a href="pages/servicios.html#equipo">Equipo Médico</a></li>
+                        <li><a href="pages/servicios.html#asesoria">Asesoría y Capacitación</a></li>
+
+                    </ul>
+                </div>
+
+                <!-- COLUMNA 4: Contacto -->
+                <div class="footer-section">
+                    <h4 class="footer-heading">Contacto</h4>
+                    <ul class="footer-contact-list">
+                        <li>
+                            <span class="footer-contact-icon-svg">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.68A2 2 0 012 .82h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+                            </span>
+                            <a href="tel:9614540029">961 454 00 29</a>
+                        </li>
+                        <li>
+                            <span class="footer-contact-icon-svg">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                            </span>
+                            <a href="mailto:contacto@jgserviciosintegrales.mx">contacto@jgserviciosintegrales.mx</a>
+                        </li>
+                        <li>
+                            <span class="footer-contact-icon-svg">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            </span>
+                            <span>Av. Rosa del Oriente No. 178,<br>Tuxtla Gutiérrez, Chiapas</span>
+                        </li>
+                        <li>
+                            <span class="footer-contact-icon-svg">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg>
+                            </span>
+                            <span>Lun–Vie 9am–7pm · Sáb 9am–2pm</span>
+                        </li>
+                    </ul>
+                </div>
+
             </div>
+
+            <!-- SEPARADOR -->
+            <div class="footer-divider"></div>
+
+            <!-- BOTTOM BAR -->
             <div class="footer-bottom">
-                <p>&copy; 2026 JG Servicios Integrales de Chiapas. Todos los derechos reservados.</p>
+                <span class="footer-copy">&copy; 2026 JG Servicios Integrales de Chiapas. Todos los derechos reservados.</span>
+                <div class="footer-legal-links">
+                    <a href="../pages/privacidad.html">Política de Privacidad</a>
+                    <span class="footer-legal-dot">·</span>
+                    <span>Tuxtla Gutiérrez, Chiapas, México</span>
+                </div>
             </div>
         </div>
     </footer>
 
+
+    <button id="scrollTopBtn" aria-label="Volver arriba">↑</button>
     <script src="../js/main.js"></script>
 
 </body>

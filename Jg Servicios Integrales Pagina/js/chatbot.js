@@ -30,7 +30,7 @@ NO MANEJAMOS — responde siempre NO:
 - Grupo II: anfetamina, metanfetamina, LSD, THC, cannabis, MDMA, fenciclidina, secobarbital
 - Grupo III: tramadol, ketamina, clonazepam, diazepam, alprazolam, lorazepam, midazolam, zolpidem, fenobarbital, buprenorfina sublingual
 - OTC: ibuprofeno, paracetamol, antigripales, vitaminas, antiácidos, insulina medicamento
-- Si preguntan por Grupo I/II/III responde: "Ese medicamento no está en nuestro catálogo." y agrega [CONTACTO]
+- Si preguntan por medicamentos del Grupo I/II/III, explica brevemente que por regulaciones de COFEPRIS no comercializamos estupefacientes ni psicotrópicos de control estricto. Si preguntan por qué, explícalo con más detalle. Solo agrega [CONTACTO] si el usuario pregunta cómo contactarnos.
 
 TOKENS — usa EXACTAMENTE estos tokens, nunca escribas URLs ni teléfonos directamente:
 - [CONTACTO]  → cuando pregunten por teléfono, WhatsApp, horario, dirección o cómo contactarnos
@@ -47,8 +47,7 @@ REGLAS CRÍTICAS:
 2. Usa SOLO los tokens de arriba para cualquier referencia a páginas o contacto
 3. Confirma productos del catálogo y sugiere cotizar con [WHATSAPP]
 4. Nunca digas precios
-5. Nunca inventes productos
-6. Si te preguntan por algún medicamento controlado, di que "NO" y das una breve explicación del por que`;
+5. Nunca inventes productos`;
 
 // ── ESTILOS ──────────────────────────────────────────────
   const style = document.createElement('style');
@@ -468,6 +467,13 @@ REGLAS CRÍTICAS:
   const input  = document.getElementById('jg-input');
   const send   = document.getElementById('jg-send');
   // ── ESTADO ────────────────────────────────────────────────
+  // Versión del chat — cambiar si se actualiza el chatbot para limpiar cache viejo
+  const CHAT_VERSION = '1.2';
+  if (sessionStorage.getItem('jg_version') !== CHAT_VERSION) {
+    sessionStorage.removeItem('jg_history');
+    sessionStorage.removeItem('jg_msglog');
+    sessionStorage.setItem('jg_version', CHAT_VERSION);
+  }
   let history = JSON.parse(sessionStorage.getItem('jg_history') || '[]');
   let msgLog  = JSON.parse(sessionStorage.getItem('jg_msglog')  || '[]');
   let opened  = false; // solo controla si ya se renderizó en ESTA página

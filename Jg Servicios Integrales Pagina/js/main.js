@@ -32,11 +32,13 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         });
 
-        // Cerrar menú al hacer clic fuera
+        // Cerrar menú al hacer clic fuera (con pequeño delay para no interferir con el toggle)
         document.addEventListener('click', function (e) {
             if (!menuToggle.contains(e.target) && !navMenu.contains(e.target)) {
-                menuToggle.classList.remove('active');
-                navMenu.classList.remove('active');
+                setTimeout(() => {
+                    menuToggle.classList.remove('active');
+                    navMenu.classList.remove('active');
+                }, 10);
             }
         });
     }
@@ -243,7 +245,7 @@ document.addEventListener('DOMContentLoaded', function () {
         alert.textContent = message;
 
         const form = document.getElementById('contactForm');
-        if (form) {
+        if (form) { 
             form.insertAdjacentElement('beforebegin', alert);
             alert.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 

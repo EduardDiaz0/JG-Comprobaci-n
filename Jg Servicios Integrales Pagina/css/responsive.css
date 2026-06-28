@@ -85,41 +85,49 @@
 
     /* ===== NAVEGACIÓN ===== */
     .menu-toggle {
-        display: flex;
+        display: flex !important;
+        position: relative;
+        z-index: 1100 !important;
     }
 
     .nav-menu {
-        position: fixed;
-        top: 0;
-        right: -100%;
-        width: 80%;
-        max-width: 320px;
-        height: 100vh;
-        background: var(--color-primary);
-        flex-direction: column;
-        justify-content: flex-start;
-        align-items: stretch;
-        gap: 0;
-        padding: 100px 0 32px;
-        transition: right var(--transition-slow);
-        z-index: var(--z-dropdown);
-        box-shadow: -10px 0 40px rgba(0,0,0,0.3);
-        max-height: none;
-        overflow-y: auto;
-        overflow-x: hidden;
+        display: none !important;
+        position: fixed !important;
+        top: 0 !important;
+        right: 0 !important;
+        left: auto !important;
+        width: 80% !important;
+        max-width: 320px !important;
+        height: 100vh !important;
+        background: var(--color-primary) !important;
+        flex-direction: column !important;
+        justify-content: flex-start !important;
+        align-items: stretch !important;
+        gap: 0 !important;
+        padding: 100px 0 32px !important;
+        transition: transform 0.35s ease !important;
+        z-index: 1050 !important;
+        box-shadow: -10px 0 40px rgba(0,0,0,0.3) !important;
+        max-height: none !important;
+        overflow-y: auto !important;
+        overflow-x: hidden !important;
+        transform: translateX(100%) !important;
     }
 
     .nav-menu.active {
-        right: 0;
+        display: flex !important;
+        transform: translateX(0) !important;
     }
 
     .nav-menu li {
         width: 100%;
-        border-bottom: 1px solid rgba(255,255,255,0.08);
+        border-bottom: 1px solid rgba(255,255,255,0.08) !important;
+        border-style: solid !important;
+        list-style: none !important;
     }
 
     .nav-menu li:last-child {
-        border-bottom: none;
+        border-bottom: none !important;
     }
 
     .nav-menu a {

@@ -76,18 +76,26 @@
         .product-img {
             width: 100%;
             height: 180px;
-            object-fit: cover;
             background: var(--color-light);
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 64px;
+            overflow: hidden;
+            border-radius: var(--border-radius-lg) var(--border-radius-lg) 0 0;
         }
 
         .product-img img {
             width: 100%;
-            height: 180px;
-            object-fit: cover;
+            height: 100%;
+            object-fit: contain;
+            object-position: center;
+            padding: 12px;
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover .product-img img {
+            transform: scale(1.05);
         }
 
         .product-body {
@@ -154,6 +162,19 @@
             margin-bottom: var(--spacing-md);
         }
 
+        /* FLIPBOOK */
+        .flipbook-wrapper {
+            margin-top: var(--spacing-xl);
+            border-radius: var(--border-radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .flipbook-iframe {
+            display: block;
+            border-radius: var(--border-radius-lg) var(--border-radius-lg) 0 0;
+        }
+
         /* NO RESULTS */
         .no-results {
             display: none;
@@ -184,7 +205,7 @@
                         <li><a href="servicios.html">Servicios</a></li>
                         <li><a href="productos.html">Productos</a></li>
                         <li><a href="proveedores.html">Proveedores</a></li>
-                        <li><a href="galeria.html">Galería</a></li>
+                        <li><a href="sucursal.html">Sucursal</a></li>
                         <li><a href="faq.html">FAQ</a></li>
                         <li><a href="contacto.html" class="btn-contact">Contacto</a></li>
                     </ul>
@@ -223,7 +244,6 @@
                 <button class="filter-btn" data-filter="farmaceutico">Farmacéuticos</button>
                 <button class="filter-btn" data-filter="equipo">Equipo Médico</button>
                 <button class="filter-btn" data-filter="descartable">Descartables</button>
-                <button class="filter-btn" data-filter="proteccion">Protección Personal</button>
             </div>
 
 
@@ -232,159 +252,126 @@
 
                 <!-- MATERIAL DE CURACIÓN -->
                 <div class="product-card" data-categoria="curacion">
-                    <div class="product-img">🩹</div>
+                    <div class="product-img"><img src="../images/productos/venda.png" alt="Nombre del producto"></div>
                     <div class="product-body">
                         <p class="product-category">Material de Curación</p>
-                        <h3>Gasas Estériles</h3>
-                        <p>Gasas 10x10 cm, 5x5 cm. Presentaciones individuales y en rollo. Varias medidas disponibles.</p>
-                        <a href="contacto.html" class="btn btn-primary btn-small">Cotizar</a>
+                        <h3>VENDA ELASTICA</h3>
+                        <p>ANCHO 15CM LARGO 5M VENDALASTIC PIEZA DEGASA</p>
+                        <a href="https://wa.me/5219611527706?text=Hola,%20me%20gustaría%20solicitar%20una%20cotización" target="_blank" class="btn btn-primary btn-small">Cotizar</a>
                     </div>
                 </div>
 
                 <div class="product-card" data-categoria="curacion">
-                    <div class="product-img">🩺</div>
+                    <div class="product-img"><img src="../images/productos/150ml.png" alt="Nombre del producto"></div>
                     <div class="product-body">
                         <p class="product-category">Material de Curación</p>
-                        <h3>Vendas de Gasa</h3>
-                        <p>Vendas de gasa elástica y no elástica. Medidas 5 cm, 7.5 cm, 10 cm, 15 cm de ancho.</p>
-                        <a href="contacto.html" class="btn btn-primary btn-small">Cotizar</a>
+                        <h3>FLEBOTEK 0-150 BF</h3>
+                        <p>EQUIPO P/VENOCLISIS  VOLUMENES MEDIDOS</p>
+                        <a href="https://wa.me/5219611527706?text=Hola,%20me%20gustaría%20solicitar%20una%20cotización" target="_blank" class="btn btn-primary btn-small">Cotizar</a>
                     </div>
                 </div>
 
                 <div class="product-card" data-categoria="curacion">
-                    <div class="product-img">🔴</div>
+                    <div class="product-img"><img src="../images/productos/mejor.png" alt="Nombre del producto"></div>
                     <div class="product-body">
                         <p class="product-category">Material de Curación</p>
-                        <h3>Apósitos y Parches</h3>
-                        <p>Apósitos adhesivos, hidrocoloides y transparentes para heridas de todo tipo.</p>
-                        <a href="contacto.html" class="btn btn-primary btn-small">Cotizar</a>
+                        <h3>KIT DE CATETER PICC DE TRINIFLEX 2 LUMEN 5 FR X 60CM</h3>
+                        <p>CATETER SYNERGY PICC 5F X 60CM DUA L LUMEN CT CON KIT DE INSERCIÓN</p>
+                        <a href="https://wa.me/5219611527706?text=Hola,%20me%20gustaría%20solicitar%20una%20cotización" target="_blank" class="btn btn-primary btn-small">Cotizar</a>
                     </div>
                 </div>
 
                 <!-- FARMACÉUTICOS -->
                 <div class="product-card" data-categoria="farmaceutico">
-                    <div class="product-img">💊</div>
+                    <div class="product-img"><img src="../images/productos/acetif.png" alt="Nombre del producto"></div>
                     <div class="product-body">
                         <p class="product-category">Farmacéuticos</p>
-                        <h3>Antibióticos</h3>
-                        <p>Amplio catálogo de antibióticos de patente y genéricos. Amoxicilina, Azitromicina, Ciprofloxacino y más.</p>
-                        <a href="contacto.html" class="btn btn-primary btn-small">Cotizar</a>
+                        <h3>ACETIF / PARACETAMOL </h3>
+                        <p> CAJA CON 10 TABLETAS DE  500 MG</p>
+                        <a href="https://wa.me/5219611527706?text=Hola,%20me%20gustaría%20solicitar%20una%20cotización" target="_blank" class="btn btn-primary btn-small">Cotizar</a>
                     </div>
                 </div>
 
                 <div class="product-card" data-categoria="farmaceutico">
-                    <div class="product-img">🧪</div>
+                    <div class="product-img"><img src="../images/productos/Tarmin.png" alt="Nombre del producto"></div>
                     <div class="product-body">
                         <p class="product-category">Farmacéuticos</p>
-                        <h3>Soluciones Parenterales</h3>
-                        <p>Solución Salina, Hartmann, Glucosada al 5%, 10%, 50%. Presentaciones 250 ml, 500 ml, 1000 ml.</p>
-                        <a href="contacto.html" class="btn btn-primary btn-small">Cotizar</a>
+                        <h3>TARMIN - LOPERAMIDA</h3>
+                        <p>2MG CAJA C/12 TABLETAS</p>
+                        <a href="https://wa.me/5219611527706?text=Hola,%20me%20gustaría%20solicitar%20una%20cotización" target="_blank" class="btn btn-primary btn-small">Cotizar</a>
                     </div>
                 </div>
 
                 <div class="product-card" data-categoria="farmaceutico">
-                    <div class="product-img">🌡️</div>
+                    <div class="product-img"><img src="../images/productos/punab.png" alt="Nombre del producto"></div>
                     <div class="product-body">
                         <p class="product-category">Farmacéuticos</p>
-                        <h3>Analgésicos y Antiinflamatorios</h3>
-                        <p>Paracetamol, Ketorolaco, Diclofenaco, Metamizol. En tabletas, inyectable y jarabe.</p>
-                        <a href="contacto.html" class="btn btn-primary btn-small">Cotizar</a>
+                        <h3>PUNAB - LOSARTAN</h3>
+                        <p>50.0 MG	CAJA CON 30 TABLETAS</p>
+                        <a href="https://wa.me/5219611527706?text=Hola,%20me%20gustaría%20solicitar%20una%20cotización" target="_blank" class="btn btn-primary btn-small">Cotizar</a>
                     </div>
                 </div>
 
                 <!-- EQUIPO MÉDICO -->
                 <div class="product-card" data-categoria="equipo">
-                    <div class="product-img">🔬</div>
+                    <div class="product-img"><img src="../images/productos/mejo.png" alt="Nombre del producto"></div>
                     <div class="product-body">
                         <p class="product-category">Equipo Médico</p>
-                        <h3>Esfigmomanómetros</h3>
-                        <p>Tensiómetros aneroide, de mercurio y digitales. Para uso clínico y domiciliario.</p>
-                        <a href="contacto.html" class="btn btn-primary btn-small">Cotizar</a>
+                        <h3>BOMBA DE INFUSIÓN PARENTERAL TERUMO</h3>
+                        <p>El Terumo Terufusion® TE-171/lm-800 es una bomba de infusión ligera y compacta, equipada con botones de funciones fáciles de usar, un sistema de alarma inteligente para mayor seguridad, y un LCD de fácil lectura.</p>
+                        <a href="https://wa.me/5219611527706?text=Hola,%20me%20gustaría%20solicitar%20una%20cotización" target="_blank" class="btn btn-primary btn-small">Cotizar</a>
+                    </div>
+                </div>
+                <div class="product-card" data-categoria="equipo">
+                    <div class="product-img"><img src="../images/productos/nebu.png" alt="Nombre del producto"></div>
+                    <div class="product-body">
+                        <p class="product-category">Equipo Médico</p>
+                        <h3>NEBULIZADOR DE COMPRESOR</h3>
+                        <p>Dispositivo utilizado para la administración de medicamentos en forma de niebla, ideal para el tratamiento de las vías respiratorias superiores e inferiores.</p>
+                        <a href="https://wa.me/5219611527706?text=Hola,%20me%20gustaría%20solicitar%20una%20cotización" target="_blank" class="btn btn-primary btn-small">Cotizar</a>
                     </div>
                 </div>
 
                 <div class="product-card" data-categoria="equipo">
-                    <div class="product-img">🏥</div>
+                    <div class="product-img"><img src="../images/productos/concentrador.png" alt="Nombre del producto"></div>
                     <div class="product-body">
                         <p class="product-category">Equipo Médico</p>
-                        <h3>Camas Hospitalarias</h3>
-                        <p>Camas de 1, 2 y 3 movimientos. Manual y eléctrica. Con y sin barandales.</p>
-                        <a href="contacto.html" class="btn btn-primary btn-small">Cotizar</a>
-                    </div>
-                </div>
-
-                <div class="product-card" data-categoria="equipo">
-                    <div class="product-img">💉</div>
-                    <div class="product-body">
-                        <p class="product-category">Equipo Médico</p>
-                        <h3>Bombas de Infusión</h3>
-                        <p>Bombas de infusión volumétricas y de jeringa. Marcas reconocidas con garantía.</p>
-                        <a href="contacto.html" class="btn btn-primary btn-small">Cotizar</a>
+                        <h3>CONCENTRADOR DE OXIGENO</h3>
+                        <p>NEBULIZADOR/CONCENTRADOR Y ALARMA DE PUREZA DE OXIGENO INHALA CARE</p>
+                        <a href="https://wa.me/5219611527706?text=Hola,%20me%20gustaría%20solicitar%20una%20cotización" target="_blank" class="btn btn-primary btn-small">Cotizar</a>
                     </div>
                 </div>
 
                 <!-- DESCARTABLES -->
                 <div class="product-card" data-categoria="descartable">
-                    <div class="product-img">🩻</div>
+                    <div class="product-img"><img src="../images/productos/Y01.png" alt="Nombre del producto"></div>
                     <div class="product-body">
                         <p class="product-category">Descartables</p>
-                        <h3>Jeringas</h3>
-                        <p>Jeringas con y sin aguja. Capacidades: 1 ml, 3 ml, 5 ml, 10 ml, 20 ml, 50 ml. Caja de 100 pzas.</p>
-                        <a href="contacto.html" class="btn btn-primary btn-small">Cotizar</a>
+                        <h3>Equipo Fotosensible Smart: Código 9TI*PA300WY01</h3>
+                        <p>Tubo de material "ámbar" que filtra la luz visible y ultravioleta para proteger fármacos fotosensibles</p>
+                        <a href="https://wa.me/5219611527706?text=Hola,%20me%20gustaría%20solicitar%20una%20cotización" target="_blank" class="btn btn-primary btn-small">Cotizar</a>
                     </div>
                 </div>
 
                 <div class="product-card" data-categoria="descartable">
-                    <div class="product-img">🔗</div>
+                    <div class="product-img"><img src="../images/productos/PV400SY01E.jpeg" alt="Nombre del producto"></div>
                     <div class="product-body">
                         <p class="product-category">Descartables</p>
-                        <h3>Catéteres Venosos</h3>
-                        <p>Catéteres periféricos calibres 14G, 16G, 18G, 20G, 22G, 24G. Mariposas y centrales.</p>
-                        <a href="contacto.html" class="btn btn-primary btn-small">Cotizar</a>
+                        <h3>BOMBA REF SA*PV400SY01E</h3>
+                        <p> EQUIPO PARA BOMBA TEREFUSION LIBRE DE AGUJA	SA*PV400SY01E CONSUMIBLE BOMBA SMART	SOLUTION ADMON COMPATIBLE TERUMO</p>
+                        <a href="https://wa.me/5219611527706?text=Hola,%20me%20gustaría%20solicitar%20una%20cotización" target="_blank" class="btn btn-primary btn-small">Cotizar</a>
                     </div>
                 </div>
 
                 <div class="product-card" data-categoria="descartable">
-                    <div class="product-img">🫀</div>
+                    <div class="product-img"><img src="../images/productos/onco.jpeg" alt="Nombre del producto"></div>
                     <div class="product-body">
                         <p class="product-category">Descartables</p>
-                        <h3>Sondas y Drenajes</h3>
-                        <p>Sondas Foley, Nasogástricas, de Nelaton. Drenajes de Jackson-Pratt. Varios calibres.</p>
-                        <a href="contacto.html" class="btn btn-primary btn-small">Cotizar</a>
+                        <h3>EQUIPO CONSUMIBLE ONCOLOGICOS LIBRE DE PVC	REF. SA*PH400WY01E </h3>
+                        <p>C/ FILTRO INFUSION 0.2 MICRAS	P/ADMINISTRACION DE SOLUCIONES PIEZA	TERUMO</p>
+                        <a href="https://wa.me/5219611527706?text=Hola,%20me%20gustaría%20solicitar%20una%20cotización" target="_blank" class="btn btn-primary btn-small">Cotizar</a>
                     </div>
                 </div>
-
-                <!-- PROTECCIÓN PERSONAL -->
-                <div class="product-card" data-categoria="proteccion">
-                    <div class="product-img">🧤</div>
-                    <div class="product-body">
-                        <p class="product-category">Protección Personal</p>
-                        <h3>Guantes Médicos</h3>
-                        <p>Guantes de látex, nitrilo y vinilo. Estériles y no estériles. Tallas XS, S, M, L, XL. Caja 100 pzas.</p>
-                        <a href="contacto.html" class="btn btn-primary btn-small">Cotizar</a>
-                    </div>
-                </div>
-
-                <div class="product-card" data-categoria="proteccion">
-                    <div class="product-img">😷</div>
-                    <div class="product-body">
-                        <p class="product-category">Protección Personal</p>
-                        <h3>Cubrebocas y Mascarillas</h3>
-                        <p>Cubrebocas plisados y moldeados tipo quirúrgico y N95/KN95. Individuales y en caja.</p>
-                        <a href="contacto.html" class="btn btn-primary btn-small">Cotizar</a>
-                    </div>
-                </div>
-
-                <div class="product-card" data-categoria="proteccion">
-                    <div class="product-img">🥽</div>
-                    <div class="product-body">
-                        <p class="product-category">Protección Personal</p>
-                        <h3>Batas y Blusones</h3>
-                        <p>Batas quirúrgicas estériles y blusones de tela y desechables para personal médico y de limpieza.</p>
-                        <a href="contacto.html" class="btn btn-primary btn-small">Cotizar</a>
-                    </div>
-                </div>
-
             </div>
 
             <!-- Sin resultados -->
@@ -397,49 +384,27 @@
             <hr style="margin: var(--spacing-3xl) 0;">
 
 
-            <!-- CATÁLOGOS PDF -->
+            <!-- CATÁLOGO INTERACTIVO -->
             <section>
-                <h2 class="section-title">Catálogos Descargables</h2>
-                <p class="section-subtitle">Descarga nuestros catálogos completos en PDF</p>
+                <h2 class="section-title">Nuestro Catálogo</h2>
+                <p class="section-subtitle">Explora todos nuestros productos en nuestro catálogo interactivo</p>
 
-                <div class="catalog-grid">
-
-                    <div class="catalog-card">
-                        <div class="catalog-icon">📋</div>
-                        <h3>Catálogo General</h3>
-                        <p>Todos nuestros productos en un solo documento.</p>
-                        <a href="../assets/catalogo-pdf/catalogo-general.pdf" target="_blank" class="btn btn-primary btn-small">
-                            Descargar PDF
+                <div class="flipbook-wrapper">
+                    <iframe
+                        src="https://publuu.com/flip-book/1131628/2518974/page/1?embed"
+                        width="100%"
+                        height="600"
+                        scrolling="no"
+                        frameborder="0"
+                        allowfullscreen
+                        allow="clipboard-write"
+                        class="flipbook-iframe">
+                    </iframe>
+                    <div style="text-align: center; margin-top: var(--spacing-lg);">
+                        <a href="https://publuu.com/flip-book/1131628/2518974" target="_blank" class="btn btn-primary">
+                            Ver catálogo en pantalla completa
                         </a>
                     </div>
-
-                    <div class="catalog-card">
-                        <div class="catalog-icon">🩹</div>
-                        <h3>Material de Curación</h3>
-                        <p>Catálogo completo de material de curación y apósitos.</p>
-                        <a href="../assets/catalogo-pdf/catalogo-curacion.pdf" target="_blank" class="btn btn-primary btn-small">
-                            Descargar PDF
-                        </a>
-                    </div>
-
-                    <div class="catalog-card">
-                        <div class="catalog-icon">💊</div>
-                        <h3>Farmacéuticos</h3>
-                        <p>Lista de medicamentos y productos farmacéuticos disponibles.</p>
-                        <a href="../assets/catalogo-pdf/catalogo-farmaceuticos.pdf" target="_blank" class="btn btn-primary btn-small">
-                            Descargar PDF
-                        </a>
-                    </div>
-
-                    <div class="catalog-card">
-                        <div class="catalog-icon">🔬</div>
-                        <h3>Equipo Médico</h3>
-                        <p>Catálogo de equipo médico y mobiliario hospitalario.</p>
-                        <a href="../assets/catalogo-pdf/catalogo-equipo.pdf" target="_blank" class="btn btn-primary btn-small">
-                            Descargar PDF
-                        </a>
-                    </div>
-
                 </div>
             </section>
 
@@ -453,7 +418,7 @@
         <div class="container" style="text-align: center; padding: var(--spacing-3xl) 0;">
             <h2 style="color: white; margin-bottom: var(--spacing-md);">¿No encuentras lo que buscas?</h2>
             <p style="color: rgba(255,255,255,0.8); margin-bottom: var(--spacing-xl);">Contáctanos y buscamos el producto que necesitas.</p>
-            <a href="contacto.html" class="btn btn-primary btn-large">Solicitar producto específico</a>
+            <a href="https://wa.me/5219611527706?text=Hola,%20me%20gustaría%20solicitar%20una%20cotización" class="btn btn-primary btn-large">Solicitar producto específico</a>
         </div>
     </section>
 
@@ -478,7 +443,7 @@
                             <a href="#" class="footer-social-btn" target="_blank" aria-label="Twitter / X">
                                 <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.74l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
                             </a>
-                            <a href="https://wa.me/529614540029" class="footer-social-btn footer-social-whatsapp" target="_blank" aria-label="WhatsApp">
+                            <a href="https://wa.me/5219611527706" class="footer-social-btn footer-social-whatsapp" target="_blank" aria-label="WhatsApp">
                                 <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
                             </a>
                         </div>
@@ -519,7 +484,7 @@
                             <span class="footer-contact-icon-svg">
                                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.68A2 2 0 012 .82h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
                             </span>
-                            <a href="tel:9614540029">961 454 00 29</a>
+                            <a href="tel:+5219611527706">961 454 00 29</a>
                         </li>
                         <li>
                             <span class="footer-contact-icon-svg">

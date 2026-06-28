@@ -270,7 +270,8 @@ img { max-width: 100%; height: auto; display: block; }
     border: none;
     cursor: pointer;
     gap: 5px;
-    z-index: var(--z-dropdown);
+    z-index: 1100;
+    position: relative;
 }
 
 .menu-toggle span {

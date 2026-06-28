@@ -47,7 +47,8 @@ REGLAS CRÍTICAS:
 2. Usa SOLO los tokens de arriba para cualquier referencia a páginas o contacto
 3. Confirma productos del catálogo y sugiere cotizar con [WHATSAPP]
 4. Nunca digas precios
-5. Nunca inventes productos`;
+5. Nunca inventes productos
+6. Si te preguntan por algún medicamento controlado, di que "NO" y das una breve explicación del por que`;
 
 // ── ESTILOS ──────────────────────────────────────────────
   const style = document.createElement('style');

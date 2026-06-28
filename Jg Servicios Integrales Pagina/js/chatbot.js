@@ -335,6 +335,13 @@ REGLAS CRÍTICAS:
   `;
   document.body.appendChild(wrap);
 
+  // ── RUTAS DINÁMICAS ──────────────────────────────────────
+  // Detecta si estamos en /pages/ o en la raíz y resuelve la ruta correcta
+  function getPath(page) {
+    const inPages = window.location.pathname.includes('/pages/');
+    return inPages ? page : 'pages/' + page;
+  }
+
   // ── TOKENS HARDCODEADOS ─────────────────────────────────
   // El modelo usa [TOKEN] y el JS lo reemplaza con HTML perfecto
   // Nunca depende de lo que genere el modelo para links/teléfonos
@@ -346,38 +353,41 @@ REGLAS CRÍTICAS:
   // Navegar en la misma pestaña
   function goTo(path) { window.location.href = path; }
 
-  const TOKENS = {
-    '[CONTACTO]': `<div class="jg-token-block">
-      <button data-href="pages/contacto.html" class="jg-token-btn jg-token-nav">${SVG_NAV} Ir a Contacto</button>
-      <a href="https://wa.me/529611527706" target="_blank" class="jg-token-btn jg-token-wa">${SVG_WA} WhatsApp: +52 961 152 7706</a>
-      <button data-href="pages/contacto.html" class="jg-token-btn jg-token-tel">${SVG_TEL} Tel: 961 295 8523 / 961 315 7432 / 961 100 6893</button>
-      <span class="jg-token-hours">🕐 Lun-Vie 9am-7pm &nbsp;|&nbsp; Sáb 9am-2pm</span>
-    </div>`,
-    '[WHATSAPP]': `<div class="jg-token-block">
-      <a href="https://wa.me/529611527706" target="_blank" class="jg-token-btn jg-token-wa">${SVG_WA} Escríbenos por WhatsApp</a>
-    </div>`,
-    '[CATALOGO]': `<div class="jg-token-block">
-      <button data-href="pages/productos.html" class="jg-token-btn jg-token-nav">${SVG_NAV} Ver Catálogo de Productos</button>
-    </div>`,
-    '[SERVICIOS]': `<div class="jg-token-block">
-      <button data-href="pages/servicios.html" class="jg-token-btn jg-token-nav">${SVG_NAV} Ver Servicios</button>
-    </div>`,
-    '[SUCURSAL]': `<div class="jg-token-block">
-      <button data-href="pages/sucursal.html" class="jg-token-btn jg-token-nav">${SVG_NAV} Ver Sucursal / Farmacia PROMAC</button>
-    </div>`,
-    '[NOSOTROS]': `<div class="jg-token-block">
-      <button data-href="pages/nosotros.html" class="jg-token-btn jg-token-nav">${SVG_NAV} Conocer más sobre nosotros</button>
-    </div>`,
-    '[PROVEEDORES]': `<div class="jg-token-block">
-      <button data-href="pages/proveedores.html" class="jg-token-btn jg-token-nav">${SVG_NAV} Ver Proveedores y Marcas</button>
-    </div>`,
-    '[FAQ]': `<div class="jg-token-block">
-      <button data-href="pages/faq.html" class="jg-token-btn jg-token-nav">${SVG_NAV} Ver Preguntas Frecuentes</button>
-    </div>`,
-  };
+  function buildTokens() {
+    return {
+      '[CONTACTO]': `<div class="jg-token-block">
+        <button data-href="${getPath('contacto.html')}" class="jg-token-btn jg-token-nav">${SVG_NAV} Ir a Contacto</button>
+        <a href="https://wa.me/529611527706" target="_blank" class="jg-token-btn jg-token-wa">${SVG_WA} WhatsApp: +52 961 152 7706</a>
+        <button data-href="${getPath('contacto.html')}" class="jg-token-btn jg-token-tel">${SVG_TEL} Tel: 961 295 8523 / 961 315 7432 / 961 100 6893</button>
+        <span class="jg-token-hours">🕐 Lun-Vie 9am-7pm &nbsp;|&nbsp; Sáb 9am-2pm</span>
+      </div>`,
+      '[WHATSAPP]': `<div class="jg-token-block">
+        <a href="https://wa.me/529611527706" target="_blank" class="jg-token-btn jg-token-wa">${SVG_WA} Escríbenos por WhatsApp</a>
+      </div>`,
+      '[CATALOGO]': `<div class="jg-token-block">
+        <button data-href="${getPath('productos.html')}" class="jg-token-btn jg-token-nav">${SVG_NAV} Ver Catálogo de Productos</button>
+      </div>`,
+      '[SERVICIOS]': `<div class="jg-token-block">
+        <button data-href="${getPath('servicios.html')}" class="jg-token-btn jg-token-nav">${SVG_NAV} Ver Servicios</button>
+      </div>`,
+      '[SUCURSAL]': `<div class="jg-token-block">
+        <button data-href="${getPath('sucursal.html')}" class="jg-token-btn jg-token-nav">${SVG_NAV} Ver Sucursal / Farmacia PROMAC</button>
+      </div>`,
+      '[NOSOTROS]': `<div class="jg-token-block">
+        <button data-href="${getPath('nosotros.html')}" class="jg-token-btn jg-token-nav">${SVG_NAV} Conocer más sobre nosotros</button>
+      </div>`,
+      '[PROVEEDORES]': `<div class="jg-token-block">
+        <button data-href="${getPath('proveedores.html')}" class="jg-token-btn jg-token-nav">${SVG_NAV} Ver Proveedores y Marcas</button>
+      </div>`,
+      '[FAQ]': `<div class="jg-token-block">
+        <button data-href="${getPath('faq.html')}" class="jg-token-btn jg-token-nav">${SVG_NAV} Ver Preguntas Frecuentes</button>
+      </div>`,
+    };
+  }
 
   function applyTokens(text) {
-    Object.entries(TOKENS).forEach(([token, html]) => {
+    const tokens = buildTokens();
+    Object.entries(tokens).forEach(([token, html]) => {
       text = text.split(token).join(html);
     });
     return text;
